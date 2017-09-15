@@ -44,7 +44,6 @@ class Page {
         val word = Pattern.compile(htmlFindRegex)
         val match = word.matcher(workingData)
         while (match.find()) {
-            System.out.println("Found love at index " + match.start() + " - " + (match.end() - 1))
             val tagNameFindRegex = "<\\\\*\\w+"
             val tag = Pattern.compile(tagNameFindRegex)
             val tagMatch = tag.matcher(workingData.substring(match.start(), match.end()))
@@ -59,7 +58,6 @@ class Page {
             if (innerMatch.find() && match.end() - match.start() > 3){
                 el.innerHTML = workingData.substring(match.start(), match.end()).substring(innerMatch.start() + 1, innerMatch.end() - 2)
             }
-            //TODO get attributes of child
             this.elements.addElement(el)
         }
         for (element in elements){

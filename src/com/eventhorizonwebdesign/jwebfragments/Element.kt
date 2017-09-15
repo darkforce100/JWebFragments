@@ -18,7 +18,6 @@ class Element{
         val word = Pattern.compile(htmlFindRegex)
         val match = word.matcher(workingData)
         while (match.find()) {
-            System.out.println("Found love at index " + match.start() + " - " + (match.end() - 1))
             val tagNameFindRegex = "<\\\\*\\w+"
             val tag = Pattern.compile(tagNameFindRegex)
             val tagMatch = tag.matcher(workingData.substring(match.start(), match.end()))
@@ -51,7 +50,6 @@ class Element{
         val attr = Pattern.compile(attrFindRegex)
         val attrMatch = attr.matcher(workingData)
         while(attrMatch.find()){
-            //TODO save key/value
             val at = Attribute()
             at.key = workingData.substring(0, workingData.indexOf("=") - 1)
             at.value = workingData.substring(workingData.indexOf("=") + 2, workingData.length - 2)
